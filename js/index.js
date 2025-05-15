@@ -1,3 +1,35 @@
+// MOCK SERVER via fetch override
+const originalFetch = window.fetch;
+window.fetch = function (url, options) {
+  const MOCK_ENDPOINT =
+    "https://formsws-hilstaging-com-0adj9wt8gzyq.runscope.net/solar";
+  if (url === MOCK_ENDPOINT && options.method === "POST") {
+    console.log("[MOCK SERVER] Intercepted POST to:", url);
+    console.log("[MOCK SERVER] Data:", JSON.parse(options.body));
+
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(
+          new Response(
+            JSON.stringify({
+              success: true,
+              message: "Mock submission received",
+            }),
+            {
+              status: 200,
+              headers: { "Content-Type": "application/json" },
+            }
+          )
+        );
+      }, 1000); // Simulate network latency
+    });
+  }
+
+  // fallback to real fetch
+  return originalFetch.apply(this, arguments);
+};
+
+// FORM HANDLING
 const form = document.getElementById("registrationForm");
 
 const nameInput = document.getElementById("name");
@@ -58,10 +90,44 @@ form.addEventListener("submit", function (e) {
     isValid = false;
   }
 
+  if (!isValid) return;
+
   if (isValid) {
-    submitBtn.textContent = "Submitted";
+    // Prepare data for submission
+    const data = {
+      name: nameInput.value.trim(),
+      city: cityInput.value.trim(),
+      state: stateInput.value.trim(),
+      phone: phoneInput.value.trim(),
+      email: emailInput.value.trim(),
+    };
+
+    // Disable button and show "Submitting"
+    submitBtn.textContent = "Submitting...";
     submitBtn.disabled = true;
     submitBtn.classList.add("disabled");
-    form.reset();
+
+    // Send AJAX request
+    fetch("https://formsws-hilstaging-com-0adj9wt8gzyq.runscope.net/solar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Network response was not ok");
+        return response.json();
+      })
+      .then(() => {
+        submitBtn.textContent = "Submitted";
+        form.reset();
+      })
+      .catch((error) => {
+        submitBtn.textContent = "Submit";
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("disabled");
+        alert("Submission failed: " + error.message);
+      });
   }
 });
