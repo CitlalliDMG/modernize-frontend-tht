@@ -1,3 +1,9 @@
+// FUNCTION TO OPEN LINK IN NEW WINDOW
+
+function openInNewWindow() {
+  window.open("https://www.google.com", "_blank", "width=800,height=600");
+}
+
 // MOCK SERVER via fetch override
 const originalFetch = window.fetch;
 window.fetch = function (url, options) {
