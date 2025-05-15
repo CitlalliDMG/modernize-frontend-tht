@@ -35,7 +35,7 @@
         Enter to win a 3rd generation Nest <br />
         Learning Thermostat worth $249.
       </h2>
-      <form class="form-container">
+      <form class="form-container" id="registrationForm">
         <div class="row">
           <div class="input-group">
             <input type="text" id="name" name="name" placeholder="Name" />
@@ -55,7 +55,6 @@
               type="text"
               id="phone"
               inputmode="numeric"
-              pattern="[0-9]*"
               name="phone"
               placeholder="Phone Number"
               maxlength="14"
@@ -65,7 +64,7 @@
         <div class="row">
           <div class="input-group">
             <input
-              type="email"
+              type="text"
               id="email"
               name="email"
               placeholder="Email Address"
@@ -74,7 +73,9 @@
         </div>
         <div class="row">
           <div class="input-group">
-            <button class="form-button">Enter to win</button>
+            <button class="form-button" type="submit" id="submitBtn">
+              Enter to win
+            </button>
           </div>
         </div>
       </form>

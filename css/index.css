@@ -4,6 +4,7 @@
   --dark-gray-form: #747375;
   --light-gray-form: #d8d8d8;
   --orange: #f6931d;
+  --red: #d50303;
   /*Accent*/
   --green: #a0bc57;
   --blue: #6eb7c2;
@@ -148,6 +149,10 @@ input:focus {
   border: 1px solid var(--orange);
 }
 
+input.error {
+  border-color: var(--red);
+}
+
 .form-button {
   background-color: var(--orange);
   border-radius: 100px;
@@ -160,6 +165,11 @@ input:focus {
   letter-spacing: 0.85;
   line-height: 24px;
   font-weight: 400;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .adds {
