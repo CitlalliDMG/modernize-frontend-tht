@@ -13,11 +13,6 @@
   /*Background*/
   --start-color: rgba(236, 248, 251, 0.9);
   --end-color: rgba(239, 239, 239, 0.1);
-  /*Boundaries*/
-  --phone-upper-boundary: 600px;
-  --tablet-portrait-upper-boundary: 900px;
-  --tablet-landscape-upper-boundary: 1200px;
-  --desktop-upper-boundary: 1800px;
 }
 
 * {
@@ -32,13 +27,11 @@ html {
 }
 
 body {
-  /* position: relative; */
+  position: relative;
   margin: 0;
-  height: 100vh;
   min-height: 100%;
   min-height: 100vh;
   background: url(/images/background.svg) repeat fixed;
-  /* overflow: hidden; */
 }
 
 body::before {
@@ -131,9 +124,7 @@ body::before {
   align-items: center;
 }
 
-input[type="text"],
-[type="email"],
-[type="number"] {
+input {
   width: 100%;
   font-size: 16px;
   font-weight: 400;
@@ -143,6 +134,7 @@ input[type="text"],
   border: 1px solid var(--light-gray-form);
   color: var(--dark-gray-form);
   outline: none;
+  background-color: var(--white);
 }
 
 input:focus {
@@ -165,6 +157,7 @@ input.error {
   letter-spacing: 0.85;
   line-height: 24px;
   font-weight: 400;
+  cursor: pointer;
 }
 
 .disabled {
@@ -239,6 +232,7 @@ input.error {
   font-weight: 600;
   text-decoration: none;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .attribution {
