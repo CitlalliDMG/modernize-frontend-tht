@@ -2,6 +2,7 @@
   /*Primary*/
   --dark-gray-main: #545253;
   --dark-gray-form: #747375;
+  --light-gray-form: #d8d8d8;
   --orange: #f6931d;
   /*Accent*/
   --green: #a0bc57;
@@ -114,18 +115,11 @@ body::before {
   display: flex;
   flex-direction: column;
   box-shadow: 0 7px 14px rgba(110, 183, 194, 0.37);
-  /* display: grid;
-  grid-template-columns: 50px 50px 50px 50px;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "name name name name"
-    "city city . state"
-    "phone phone phone phone"
-    "email email email email"; */
 }
 
 .row {
   display: flex;
+  flex-direction: column;
 }
 
 .input-group {
@@ -136,12 +130,22 @@ body::before {
   align-items: center;
 }
 
-input {
+input[type="text"],
+[type="email"],
+[type="number"] {
   width: 100%;
   font-size: 16px;
   font-weight: 400;
   height: 50px;
   padding: 0 25px;
+  border-radius: 4px;
+  border: 1px solid var(--light-gray-form);
+  color: var(--dark-gray-form);
+  outline: none;
+}
+
+input:focus {
+  border: 1px solid var(--orange);
 }
 
 .form-button {
@@ -227,15 +231,10 @@ input {
   font-size: 14px;
 }
 
-footer {
-  /* position: relative; */
-}
-
 .attribution {
   margin-top: 8em;
   font-size: 11px;
   text-align: center;
-  /* position: fixed; */
   bottom: 0;
   width: 100%;
   color: var(--dark-gray-main);
@@ -255,6 +254,10 @@ footer {
   }
   .form-header {
     max-width: 670px;
+  }
+
+  .row {
+    flex-direction: row;
   }
 
   .form-button {

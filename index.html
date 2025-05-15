@@ -38,48 +38,36 @@
       <form class="form-container">
         <div class="row">
           <div class="input-group">
-            <input
-              type="text"
-              id="formName"
-              name="formName"
-              placeholder="Name"
-            />
+            <input type="text" id="name" name="name" placeholder="Name" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-group">
+            <input type="text" id="city" name="city" placeholder="City" />
+          </div>
+          <div class="input-group">
+            <input type="text" id="state" name="state" placeholder="State" />
           </div>
         </div>
         <div class="row">
           <div class="input-group">
             <input
               type="text"
-              id="formCity"
-              name="formCity"
-              placeholder="City"
-            />
-          </div>
-          <div class="input-group">
-            <input
-              type="text"
-              id="formState"
-              name="formState"
-              placeholder="State"
-            />
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-group">
-            <input
-              type="text"
-              id="formPhone"
-              name="formPhone"
+              id="phone"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              name="phone"
               placeholder="Phone Number"
+              maxlength="14"
             />
           </div>
         </div>
         <div class="row">
           <div class="input-group">
             <input
-              type="text"
-              id="formEmail"
-              name="formEmail"
+              type="email"
+              id="email"
+              name="email"
               placeholder="Email Address"
             />
           </div>
